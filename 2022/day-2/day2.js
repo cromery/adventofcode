@@ -4,7 +4,7 @@ import { day2Input } from './day2-input.js'
 export const day2 = () => {
     const rounds = helper.splitAtLineBreak(day2Input).map(round => round.split(' '));
 
-    const rules = {
+    const gameRules = {
         A: {
             name: 'rock',
             score: 1, 
@@ -20,14 +20,14 @@ export const day2 = () => {
         draw: 3,
         win: 6,
         lose: 0,
-        beatMap: function(key) {
+        getLosingHand: function(key) {
                 if (key === this.A) {
                     return this.C;
                 } else if (key === this.B) {
                     return this.A;
                 } else return this.B
         },
-        loseMap: function(key) {
+        getWinningHand: function(key) {
                 if (key === this.A) {
                     return this.B;
                 } else if (key === this.B) {
@@ -37,20 +37,20 @@ export const day2 = () => {
     };
 
     // xyz to abc Converter
-    const xyz = {
-            ...rules,
-            X: rules.A, 
-            Y: rules.B, 
-            Z: rules.C
+    const rules = {
+            ...gameRules,
+            X: gameRules.A, 
+            Y: gameRules.B, 
+            Z: gameRules.C
         };
 
     let firstStratPoints = 0;
     rounds.forEach(round => {
-        const [opponent, player] = [rules[round[0]], xyz[round[1]]];
+        const [opponent, player] = [rules[round[0]], rules[round[1]]];
         if (opponent == player) {
             return firstStratPoints += rules.draw + player.score;
         }
-        if (xyz.beatMap(player) == opponent) {
+        if (rules.getLosingHand(player) == opponent) {
             return firstStratPoints += rules.win + player.score;
         } else {
             return firstStratPoints += rules.lose + player.score;
@@ -58,7 +58,7 @@ export const day2 = () => {
     });
     console.log('firstStratPoints:', firstStratPoints);
 
-    const xyzStrat = {
+    const part2Strat = {
         X: rules.lose,
         Y: rules.draw,
         Z: rules.win,
@@ -66,14 +66,14 @@ export const day2 = () => {
 
     let secondStratPoints = 0;
     rounds.forEach(round => {
-        const [opponent, playerStrat] = [rules[round[0]], xyzStrat[round[1]]];
+        const [opponent, playerStrat] = [rules[round[0]], part2Strat[round[1]]];
         if (playerStrat === rules.draw) {
             return secondStratPoints += rules.draw + opponent.score;
         }
         if (playerStrat === rules.win) {
-            secondStratPoints += rules.win + rules.loseMap(opponent).score;
+            secondStratPoints += rules.win + rules.getWinningHand(opponent).score;
         } else {
-            secondStratPoints += rules.lose + rules.beatMap(opponent).score;
+            secondStratPoints += rules.lose + rules.getLosingHand(opponent).score;
         }
     });
     console.log('secondStratPoints:', secondStratPoints);

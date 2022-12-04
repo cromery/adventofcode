@@ -1,5 +1,5 @@
 import * as helper from '../../helper.js'
-import { day4Input } from './day4-input.js'
+import { day4Input, andysInput } from './day4-input.js'
 
 export const day4 = () => {
     const assignmentList = helper.splitAtLineBreak(day4Input).map(pair => {
