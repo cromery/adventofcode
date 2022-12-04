@@ -4,7 +4,7 @@ import { day2Input } from './day2-input.js'
 export const day2 = () => {
     const rounds = helper.splitAtLineBreak(day2Input).map(round => round.split(' '));
 
-    const gameRules = {
+    let rules = {
         A: {
             name: 'rock',
             score: 1, 
@@ -36,12 +36,11 @@ export const day2 = () => {
         },
     };
 
-    // xyz to abc Converter
-    const rules = {
-            ...gameRules,
-            X: gameRules.A, 
-            Y: gameRules.B, 
-            Z: gameRules.C
+    rules = {
+        ...rules,
+        X: rules.A,
+        Y: rules.B,
+        Z: rules.C
         };
 
     let firstStratPoints = 0;
