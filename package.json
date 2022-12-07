@@ -6,7 +6,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon index.js"
+    "start": "nodemon index.js",
+    "setup-day": "cd 2022 && mkdir day-$DAY && cd day-$DAY && touch day$DAY.js && touch day$DAY-input.js"
   },
   "keywords": [],
   "author": "",
