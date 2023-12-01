@@ -6,13 +6,21 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon index.js",
-    "setup-day": "cd 2022 && mkdir day-$DAY && cd day-$DAY && touch day$DAY.js && touch day$DAY-input.js"
+    "start": "tsx index.ts",
+    "setup-day": "cd 2023 && mkdir day-$DAY && cd day-$DAY && touch day$DAY.js && touch day$DAY-input.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "nodemon": "^2.0.20"
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^6.13.1",
+    "@typescript-eslint/parser": "^6.13.1",
+    "eslint": "^8.54.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-prettier": "^5.0.1",
+    "nodemon": "^2.0.20",
+    "prettier": "^3.1.0",
+    "tsx": "^4.6.1",
+    "typescript": "^5.3.2"
   }
 }
