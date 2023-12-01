@@ -1,3 +1,3 @@
-export function splitAtLineBreak(string) {
-               return string.split('\n');
+export function splitAtLineBreak(string): Array<string> {
+    return string.split('\n');
 }

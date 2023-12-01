@@ -6,7 +6,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "tsx index.ts",
+    "start": "tsx watch index.ts",
     "setup-day": "cd 2023 && mkdir day-$DAY && cd day-$DAY && touch day$DAY.js && touch day$DAY-input.js"
   },
   "keywords": [],
